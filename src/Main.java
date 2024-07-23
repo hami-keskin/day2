@@ -59,8 +59,46 @@ public class Main {
         }
 
         // çarpma ve bölme
+        for (int j = 0; j < items.size(); j++) {
+            if (items.get(j).equals("*") || items.get(j).equals("/")) {
+                int leftNumber = Integer.parseInt(items.get(j - 1));
+                int rightNumber = Integer.parseInt(items.get(j + 1));
+                int tempResult = 0;
 
+                if (items.get(j).equals("*")) {
+                    tempResult = leftNumber * rightNumber;
+                } else if (items.get(j).equals("/")) {
+                    tempResult = leftNumber / rightNumber;
+                }
 
+                items.set(j - 1, String.valueOf(tempResult)); // Güncellenen sonucu listeye koy
+                items.remove(j + 1); // Kullanılmış olan sayıyı listeden çıkar
+                items.remove(j); // Kullanılmış olan işlemi listeden çıkar
+                j--;
+            }
+        }
+
+        // toplama ve çıkarma
+        for (int j = 0; j < items.size(); j++) {
+            if (items.get(j).equals("+") || items.get(j).equals("-")) {
+                int leftNumber = Integer.parseInt(items.get(j - 1));
+                int rightNumber = Integer.parseInt(items.get(j + 1));
+                int tempResult = 0;
+
+                if (items.get(j).equals("+")) {
+                    tempResult = leftNumber + rightNumber;
+                } else if (items.get(j).equals("-")) {
+                    tempResult = leftNumber - rightNumber;
+                }
+
+                items.set(j - 1, String.valueOf(tempResult)); // Güncellenen sonucu listeye koy
+                items.remove(j + 1); // Kullanılmış olan sayıyı listeden çıkar
+                items.remove(j); // Kullanılmış olan işlemi listeden çıkar
+                j--;
+            }
+        }
+
+        int finalResult = Integer.parseInt(items.get(0));
         System.out.println("Sonuç: " + finalResult);
         scanner.close();
     }
