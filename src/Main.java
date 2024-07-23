@@ -1,11 +1,12 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
-    // Sayı Map
+    // Sayı ve işlem Map
     private static final Map<String, Integer> numberMap = new HashMap<>();
-    // İşlem Map
     private static final Map<String, String> operatorMap = new HashMap<>();
 
     static {
@@ -33,10 +34,14 @@ public class Main {
         operatorMap.put("divided-by", "/");
         operatorMap.put("over", "/");
     }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hesaplama girin: ");
         String input = scanner.nextLine();
+
+        // Sayı ve işlemler liste
+        List<String> elements = new ArrayList<>();
 
         // Girdiyi kelimelere bölme
         String[] words = input.split(" ");
@@ -44,12 +49,20 @@ public class Main {
         for (String word : words) {
             word = word.toLowerCase();
             if (numberMap.containsKey(word)) {
-                System.out.println("Sayı: " + numberMap.get(word));
+                elements.add(String.valueOf(numberMap.get(word)));
             } else if (operatorMap.containsKey(word)) {
-                System.out.println("İşlem: " + operatorMap.get(word));
+                elements.add(operatorMap.get(word));
+            } else {
+                System.out.println("Bilinmeyen kelime: " + word);
+                return;
             }
         }
 
+        // İşlem önceliğine göre hesaplama
+        // çarpma ve bölme
+
+
+        System.out.println("Sonuç: " + finalResult);
         scanner.close();
     }
 }
