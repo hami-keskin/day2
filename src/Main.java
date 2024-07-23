@@ -6,22 +6,22 @@ import java.util.Scanner;
 
 public class Main {
     // Sayı ve işlem Map
-    private static final Map<String, Integer> numberMap = new HashMap<>();
+    private static final Map<String, Double> numberMap = new HashMap<>();
     private static final Map<String, String> operatorMap = new HashMap<>();
 
     static {
         // Sayı Map
-        numberMap.put("zero", 0);
-        numberMap.put("one", 1);
-        numberMap.put("two", 2);
-        numberMap.put("three", 3);
-        numberMap.put("four", 4);
-        numberMap.put("five", 5);
-        numberMap.put("six", 6);
-        numberMap.put("seven", 7);
-        numberMap.put("eight", 8);
-        numberMap.put("nine", 9);
-        numberMap.put("ten", 10);
+        numberMap.put("zero", 0.0);
+        numberMap.put("one", 1.0);
+        numberMap.put("two", 2.0);
+        numberMap.put("three", 3.0);
+        numberMap.put("four", 4.0);
+        numberMap.put("five", 5.0);
+        numberMap.put("six", 6.0);
+        numberMap.put("seven", 7.0);
+        numberMap.put("eight", 8.0);
+        numberMap.put("nine", 9.0);
+        numberMap.put("ten", 10.0);
 
         // İşlem Map
         operatorMap.put("add", "+");
@@ -61,9 +61,9 @@ public class Main {
         // çarpma ve bölme
         for (int j = 0; j < items.size(); j++) {
             if (items.get(j).equals("*") || items.get(j).equals("/")) {
-                int leftNumber = Integer.parseInt(items.get(j - 1));
-                int rightNumber = Integer.parseInt(items.get(j + 1));
-                int tempResult = 0;
+                double leftNumber = Double.parseDouble(items.get(j - 1));
+                double rightNumber = Double.parseDouble(items.get(j + 1));
+                double tempResult = 0.0;
 
                 if (items.get(j).equals("*")) {
                     tempResult = leftNumber * rightNumber;
@@ -81,9 +81,9 @@ public class Main {
         // toplama ve çıkarma
         for (int j = 0; j < items.size(); j++) {
             if (items.get(j).equals("+") || items.get(j).equals("-")) {
-                int leftNumber = Integer.parseInt(items.get(j - 1));
-                int rightNumber = Integer.parseInt(items.get(j + 1));
-                int tempResult = 0;
+                double leftNumber = Double.parseDouble(items.get(j - 1));
+                double rightNumber = Double.parseDouble(items.get(j + 1));
+                double tempResult = 0.0;
 
                 if (items.get(j).equals("+")) {
                     tempResult = leftNumber + rightNumber;
@@ -98,7 +98,7 @@ public class Main {
             }
         }
 
-        int finalResult = Integer.parseInt(items.get(0));
+        double finalResult = Double.parseDouble(items.get(0));
         System.out.println("Sonuç: " + finalResult);
         scanner.close();
     }
