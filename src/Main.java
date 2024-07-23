@@ -41,7 +41,7 @@ public class Main {
         String input = scanner.nextLine();
 
         // Sayı ve işlemler liste
-        List<String> elements = new ArrayList<>();
+        List<String> items = new ArrayList<>();
 
         // Girdiyi kelimelere bölme
         String[] words = input.split(" ");
@@ -49,16 +49,15 @@ public class Main {
         for (String word : words) {
             word = word.toLowerCase();
             if (numberMap.containsKey(word)) {
-                elements.add(String.valueOf(numberMap.get(word)));
+                items.add(String.valueOf(numberMap.get(word)));
             } else if (operatorMap.containsKey(word)) {
-                elements.add(operatorMap.get(word));
+                items.add(operatorMap.get(word));
             } else {
                 System.out.println("Bilinmeyen kelime: " + word);
                 return;
             }
         }
 
-        // İşlem önceliğine göre hesaplama
         // çarpma ve bölme
 
 
